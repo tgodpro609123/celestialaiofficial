@@ -66,12 +66,7 @@
 }
 
 /* Dark is the default theme. */
-:root,
-.dark {
-  --radius: 0.875rem;
-  --background: oklch(0.14 0.028 governs);
-  --background: oklch(0.14 0.028 governs, 0.14 0.028 275);
-}
+
 
 :root,
 .dark {
