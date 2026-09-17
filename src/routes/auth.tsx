@@ -13,10 +13,10 @@ import { BRAND } from "@/lib/brand";
 type Mode = "login" | "signup" | "reset";
 
 export const Route = createFileRoute("/auth")({
-  validateSearch: (search: Record<string, unknown>): { mode: Mode } => ({
-    mode:
-      search.mode === "signup" || search.mode === "reset" ? (search.mode as Mode) : "login",
-  }),
+  validateSearch: (search: Record<string, unknown>): { mode: Mode } => {
+    const raw = search["mode"];
+    return { mode: raw === "signup" || raw === "reset" ? (raw as Mode) : "login" };
+  },
   head: () => ({
     meta: [
       { title: "Sign in or create an account — ALL-IN-1 AI" },
