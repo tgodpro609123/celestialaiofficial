@@ -16,6 +16,16 @@ import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as AuthenticatedAppRouteRouteImport } from './routes/_authenticated/app/route'
+import { Route as AuthenticatedAppIndexRouteImport } from './routes/_authenticated/app/index'
+import { Route as AuthenticatedAppAgentsRouteImport } from './routes/_authenticated/app/agents'
+import { Route as AuthenticatedAppChatRouteImport } from './routes/_authenticated/app/chat'
+import { Route as AuthenticatedAppCodeRouteImport } from './routes/_authenticated/app/code'
+import { Route as AuthenticatedAppFilesRouteImport } from './routes/_authenticated/app/files'
+import { Route as AuthenticatedAppGameRouteImport } from './routes/_authenticated/app/game'
+import { Route as AuthenticatedAppImageRouteImport } from './routes/_authenticated/app/image'
+import { Route as AuthenticatedAppProjectsRouteImport } from './routes/_authenticated/app/projects'
+import { Route as AuthenticatedAppResearchRouteImport } from './routes/_authenticated/app/research'
+import { Route as AuthenticatedAppVoiceRouteImport } from './routes/_authenticated/app/voice'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -51,6 +61,58 @@ const AuthenticatedAppRouteRoute = AuthenticatedAppRouteRouteImport.update({
   path: '/app',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedAppIndexRoute = AuthenticatedAppIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AuthenticatedAppRouteRoute,
+} as any)
+const AuthenticatedAppAgentsRoute = AuthenticatedAppAgentsRouteImport.update({
+  id: '/agents',
+  path: '/agents',
+  getParentRoute: () => AuthenticatedAppRouteRoute,
+} as any)
+const AuthenticatedAppChatRoute = AuthenticatedAppChatRouteImport.update({
+  id: '/chat',
+  path: '/chat',
+  getParentRoute: () => AuthenticatedAppRouteRoute,
+} as any)
+const AuthenticatedAppCodeRoute = AuthenticatedAppCodeRouteImport.update({
+  id: '/code',
+  path: '/code',
+  getParentRoute: () => AuthenticatedAppRouteRoute,
+} as any)
+const AuthenticatedAppFilesRoute = AuthenticatedAppFilesRouteImport.update({
+  id: '/files',
+  path: '/files',
+  getParentRoute: () => AuthenticatedAppRouteRoute,
+} as any)
+const AuthenticatedAppGameRoute = AuthenticatedAppGameRouteImport.update({
+  id: '/game',
+  path: '/game',
+  getParentRoute: () => AuthenticatedAppRouteRoute,
+} as any)
+const AuthenticatedAppImageRoute = AuthenticatedAppImageRouteImport.update({
+  id: '/image',
+  path: '/image',
+  getParentRoute: () => AuthenticatedAppRouteRoute,
+} as any)
+const AuthenticatedAppProjectsRoute =
+  AuthenticatedAppProjectsRouteImport.update({
+    id: '/projects',
+    path: '/projects',
+    getParentRoute: () => AuthenticatedAppRouteRoute,
+  } as any)
+const AuthenticatedAppResearchRoute =
+  AuthenticatedAppResearchRouteImport.update({
+    id: '/research',
+    path: '/research',
+    getParentRoute: () => AuthenticatedAppRouteRoute,
+  } as any)
+const AuthenticatedAppVoiceRoute = AuthenticatedAppVoiceRouteImport.update({
+  id: '/voice',
+  path: '/voice',
+  getParentRoute: () => AuthenticatedAppRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -58,7 +120,17 @@ export interface FileRoutesByFullPath {
   '/privacy': typeof PrivacyRoute
   '/reset-password': typeof ResetPasswordRoute
   '/terms': typeof TermsRoute
-  '/app': typeof AuthenticatedAppRouteRoute
+  '/app': typeof AuthenticatedAppRouteRouteWithChildren
+  '/app/agents': typeof AuthenticatedAppAgentsRoute
+  '/app/chat': typeof AuthenticatedAppChatRoute
+  '/app/code': typeof AuthenticatedAppCodeRoute
+  '/app/files': typeof AuthenticatedAppFilesRoute
+  '/app/game': typeof AuthenticatedAppGameRoute
+  '/app/image': typeof AuthenticatedAppImageRoute
+  '/app/projects': typeof AuthenticatedAppProjectsRoute
+  '/app/research': typeof AuthenticatedAppResearchRoute
+  '/app/voice': typeof AuthenticatedAppVoiceRoute
+  '/app/': typeof AuthenticatedAppIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -66,7 +138,16 @@ export interface FileRoutesByTo {
   '/privacy': typeof PrivacyRoute
   '/reset-password': typeof ResetPasswordRoute
   '/terms': typeof TermsRoute
-  '/app': typeof AuthenticatedAppRouteRoute
+  '/app/agents': typeof AuthenticatedAppAgentsRoute
+  '/app/chat': typeof AuthenticatedAppChatRoute
+  '/app/code': typeof AuthenticatedAppCodeRoute
+  '/app/files': typeof AuthenticatedAppFilesRoute
+  '/app/game': typeof AuthenticatedAppGameRoute
+  '/app/image': typeof AuthenticatedAppImageRoute
+  '/app/projects': typeof AuthenticatedAppProjectsRoute
+  '/app/research': typeof AuthenticatedAppResearchRoute
+  '/app/voice': typeof AuthenticatedAppVoiceRoute
+  '/app': typeof AuthenticatedAppIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -76,13 +157,54 @@ export interface FileRoutesById {
   '/privacy': typeof PrivacyRoute
   '/reset-password': typeof ResetPasswordRoute
   '/terms': typeof TermsRoute
-  '/_authenticated/app': typeof AuthenticatedAppRouteRoute
+  '/_authenticated/app': typeof AuthenticatedAppRouteRouteWithChildren
+  '/_authenticated/app/agents': typeof AuthenticatedAppAgentsRoute
+  '/_authenticated/app/chat': typeof AuthenticatedAppChatRoute
+  '/_authenticated/app/code': typeof AuthenticatedAppCodeRoute
+  '/_authenticated/app/files': typeof AuthenticatedAppFilesRoute
+  '/_authenticated/app/game': typeof AuthenticatedAppGameRoute
+  '/_authenticated/app/image': typeof AuthenticatedAppImageRoute
+  '/_authenticated/app/projects': typeof AuthenticatedAppProjectsRoute
+  '/_authenticated/app/research': typeof AuthenticatedAppResearchRoute
+  '/_authenticated/app/voice': typeof AuthenticatedAppVoiceRoute
+  '/_authenticated/app/': typeof AuthenticatedAppIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/privacy' | '/reset-password' | '/terms' | '/app'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/privacy'
+    | '/reset-password'
+    | '/terms'
+    | '/app'
+    | '/app/agents'
+    | '/app/chat'
+    | '/app/code'
+    | '/app/files'
+    | '/app/game'
+    | '/app/image'
+    | '/app/projects'
+    | '/app/research'
+    | '/app/voice'
+    | '/app/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/privacy' | '/reset-password' | '/terms' | '/app'
+  to:
+    | '/'
+    | '/auth'
+    | '/privacy'
+    | '/reset-password'
+    | '/terms'
+    | '/app/agents'
+    | '/app/chat'
+    | '/app/code'
+    | '/app/files'
+    | '/app/game'
+    | '/app/image'
+    | '/app/projects'
+    | '/app/research'
+    | '/app/voice'
+    | '/app'
   id:
     | '__root__'
     | '/'
@@ -92,6 +214,16 @@ export interface FileRouteTypes {
     | '/reset-password'
     | '/terms'
     | '/_authenticated/app'
+    | '/_authenticated/app/agents'
+    | '/_authenticated/app/chat'
+    | '/_authenticated/app/code'
+    | '/_authenticated/app/files'
+    | '/_authenticated/app/game'
+    | '/_authenticated/app/image'
+    | '/_authenticated/app/projects'
+    | '/_authenticated/app/research'
+    | '/_authenticated/app/voice'
+    | '/_authenticated/app/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -154,15 +286,116 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAppRouteRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/app/': {
+      id: '/_authenticated/app/'
+      path: '/'
+      fullPath: '/app/'
+      preLoaderRoute: typeof AuthenticatedAppIndexRouteImport
+      parentRoute: typeof AuthenticatedAppRouteRoute
+    }
+    '/_authenticated/app/agents': {
+      id: '/_authenticated/app/agents'
+      path: '/agents'
+      fullPath: '/app/agents'
+      preLoaderRoute: typeof AuthenticatedAppAgentsRouteImport
+      parentRoute: typeof AuthenticatedAppRouteRoute
+    }
+    '/_authenticated/app/chat': {
+      id: '/_authenticated/app/chat'
+      path: '/chat'
+      fullPath: '/app/chat'
+      preLoaderRoute: typeof AuthenticatedAppChatRouteImport
+      parentRoute: typeof AuthenticatedAppRouteRoute
+    }
+    '/_authenticated/app/code': {
+      id: '/_authenticated/app/code'
+      path: '/code'
+      fullPath: '/app/code'
+      preLoaderRoute: typeof AuthenticatedAppCodeRouteImport
+      parentRoute: typeof AuthenticatedAppRouteRoute
+    }
+    '/_authenticated/app/files': {
+      id: '/_authenticated/app/files'
+      path: '/files'
+      fullPath: '/app/files'
+      preLoaderRoute: typeof AuthenticatedAppFilesRouteImport
+      parentRoute: typeof AuthenticatedAppRouteRoute
+    }
+    '/_authenticated/app/game': {
+      id: '/_authenticated/app/game'
+      path: '/game'
+      fullPath: '/app/game'
+      preLoaderRoute: typeof AuthenticatedAppGameRouteImport
+      parentRoute: typeof AuthenticatedAppRouteRoute
+    }
+    '/_authenticated/app/image': {
+      id: '/_authenticated/app/image'
+      path: '/image'
+      fullPath: '/app/image'
+      preLoaderRoute: typeof AuthenticatedAppImageRouteImport
+      parentRoute: typeof AuthenticatedAppRouteRoute
+    }
+    '/_authenticated/app/projects': {
+      id: '/_authenticated/app/projects'
+      path: '/projects'
+      fullPath: '/app/projects'
+      preLoaderRoute: typeof AuthenticatedAppProjectsRouteImport
+      parentRoute: typeof AuthenticatedAppRouteRoute
+    }
+    '/_authenticated/app/research': {
+      id: '/_authenticated/app/research'
+      path: '/research'
+      fullPath: '/app/research'
+      preLoaderRoute: typeof AuthenticatedAppResearchRouteImport
+      parentRoute: typeof AuthenticatedAppRouteRoute
+    }
+    '/_authenticated/app/voice': {
+      id: '/_authenticated/app/voice'
+      path: '/voice'
+      fullPath: '/app/voice'
+      preLoaderRoute: typeof AuthenticatedAppVoiceRouteImport
+      parentRoute: typeof AuthenticatedAppRouteRoute
+    }
   }
 }
 
+interface AuthenticatedAppRouteRouteChildren {
+  AuthenticatedAppAgentsRoute: typeof AuthenticatedAppAgentsRoute
+  AuthenticatedAppChatRoute: typeof AuthenticatedAppChatRoute
+  AuthenticatedAppCodeRoute: typeof AuthenticatedAppCodeRoute
+  AuthenticatedAppFilesRoute: typeof AuthenticatedAppFilesRoute
+  AuthenticatedAppGameRoute: typeof AuthenticatedAppGameRoute
+  AuthenticatedAppImageRoute: typeof AuthenticatedAppImageRoute
+  AuthenticatedAppProjectsRoute: typeof AuthenticatedAppProjectsRoute
+  AuthenticatedAppResearchRoute: typeof AuthenticatedAppResearchRoute
+  AuthenticatedAppVoiceRoute: typeof AuthenticatedAppVoiceRoute
+  AuthenticatedAppIndexRoute: typeof AuthenticatedAppIndexRoute
+}
+
+const AuthenticatedAppRouteRouteChildren: AuthenticatedAppRouteRouteChildren = {
+  AuthenticatedAppAgentsRoute: AuthenticatedAppAgentsRoute,
+  AuthenticatedAppChatRoute: AuthenticatedAppChatRoute,
+  AuthenticatedAppCodeRoute: AuthenticatedAppCodeRoute,
+  AuthenticatedAppFilesRoute: AuthenticatedAppFilesRoute,
+  AuthenticatedAppGameRoute: AuthenticatedAppGameRoute,
+  AuthenticatedAppImageRoute: AuthenticatedAppImageRoute,
+  AuthenticatedAppProjectsRoute: AuthenticatedAppProjectsRoute,
+  AuthenticatedAppResearchRoute: AuthenticatedAppResearchRoute,
+  AuthenticatedAppVoiceRoute: AuthenticatedAppVoiceRoute,
+  AuthenticatedAppIndexRoute: AuthenticatedAppIndexRoute,
+}
+
+const AuthenticatedAppRouteRouteWithChildren =
+  AuthenticatedAppRouteRoute._addFileChildren(
+    AuthenticatedAppRouteRouteChildren,
+  )
+
 interface AuthenticatedRouteRouteChildren {
-  AuthenticatedAppRouteRoute: typeof AuthenticatedAppRouteRoute
+  AuthenticatedAppRouteRoute: typeof AuthenticatedAppRouteRouteWithChildren
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
-  AuthenticatedAppRouteRoute: AuthenticatedAppRouteRoute,
+  AuthenticatedAppRouteRoute: AuthenticatedAppRouteRouteWithChildren,
 }
 
 const AuthenticatedRouteRouteWithChildren =
